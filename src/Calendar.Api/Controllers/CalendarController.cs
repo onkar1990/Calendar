@@ -10,7 +10,7 @@ namespace Calendar.Api.Controllers
 {
 
     [ApiController]
-    [Route("api/calendar")]
+    [Route("calendar")]
     public class CalendarController : ControllerBase
     {
         private readonly ICalendarService _calendarService;
