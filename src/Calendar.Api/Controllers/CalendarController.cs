@@ -1,18 +1,16 @@
-﻿
-using Calendar.Api.Models;
+﻿using Calendar.Api.Models;
 using Calendar.Api.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Calendar.Api.Controllers
 {
 
     [ApiController]
-    [Route("api/calender")]
+    [Route("api/calendar")]
     public class CalendarController : ControllerBase
     {
         private readonly ICalendarService _calendarService;
@@ -36,9 +34,7 @@ namespace Calendar.Api.Controllers
 
             var calenderEventToReturn = _calendarService.AddCalenderEvent(calendarEvent);
 
-            return CreatedAtRoute("query",
-                new { id = calenderEventToReturn.Id },
-                calenderEventToReturn);
+            return CreatedAtAction("Post", calenderEventToReturn);
 
         }
 

@@ -87,8 +87,7 @@ namespace Calendar.Api.Tests
             //Assert
             result.Should().NotBeNull();
             result.Value.Should().BeOfType<CalendarEventDto>();
-            result.RouteName.Should().Be("query");
-            result.RouteValues["id"].Should().Be(expectedCalendarEvent.Id);
+          
 
             var actualCalendarEvents = result.Value as CalendarEventDto;
             actualCalendarEvents.Should().NotBeNull();

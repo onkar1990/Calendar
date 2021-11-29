@@ -8,6 +8,7 @@ namespace Calendar.Api.Profiles
         public CalenderEventsProfile()
         {
             CreateMap<Entities.CalendarEvent, Models.CalendarEventDto>();
+            CreateMap<Models.CalendarEventDto,Entities.CalendarEvent>();
 
         }
 

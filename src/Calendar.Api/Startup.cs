@@ -45,7 +45,7 @@ namespace Calendar.Api
 
             services.AddDbContext<CalendarEventContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("CalendarDB"));
+                options.UseInMemoryDatabase("CalendarDB");
             });
             services.AddScoped<ICalendarEventRepository, CalendarEventRepository>();
             services.AddScoped<ICalendarService, CalendarService>();
