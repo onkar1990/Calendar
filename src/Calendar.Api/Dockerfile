@@ -1,8 +1,5 @@
 #See https://aka.ms/containerfastmode to understand how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
-#Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
-#For more information, please see https://aka.ms/containercompat
-
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
 EXPOSE 80
@@ -10,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
-COPY ["Calender.Api/Calender.Api.csproj", "Calender.Api/"]
-RUN dotnet restore "Calender.Api/Calender.Api.csproj"
+COPY ["src/Calendar.Api/Calendar.Api.csproj", "src/Calendar.Api/"]
+RUN dotnet restore "src/Calendar.Api/Calendar.Api.csproj"
 COPY . .
-WORKDIR "/src/Calender.Api"
-RUN dotnet build "Calender.Api.csproj" -c Release -o /app/build
+WORKDIR "/src/src/Calendar.Api"
+RUN dotnet build "Calendar.Api.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "Calender.Api.csproj" -c Release -o /app/publish
+RUN dotnet publish "Calendar.Api.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Calender.Api.dll"]
+ENTRYPOINT ["dotnet", "Calendar.Api.dll"]

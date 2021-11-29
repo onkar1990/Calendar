@@ -118,7 +118,7 @@ namespace Calendar.Api.Controllers
         /// <response code="204">The matching filter is not correct.</response>
         [HttpGet]
         [Route("query")]
-        public ActionResult<IEnumerable<CalendarEventDto>> GetCalendarEventBy(int? id = null, string name = null, string eventOrganizer = null, string location = null)
+        public ActionResult<IEnumerable<CalendarEventDto>> GetCalendarEventBy(int? id = null, string? name = null, string? eventOrganizer = null, string? location = null)
         {
 
             if (id != null)
